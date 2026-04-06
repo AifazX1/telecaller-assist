@@ -110,9 +110,26 @@ def main():
                 st.markdown(f"**### {current_num}**")
                 st.caption(f"Position: {st.session_state.current_index + 1} of {total}")
                 
-                # CALL NOW button - mobile dialer
-                if st.button("📞 CALL NOW", type="primary", use_container_width=True, help="Opens phone dialer"):
-                    st.markdown(f"[Click to call {current_num}](tel:{current_num})")
+                # CALL NOW button - direct tel link
+                call_html = f"""
+                <div style="text-align: center; margin: 20px 0;">
+                    <a href="tel:{current_num}" style="
+                        background-color: #10B981; 
+                        color: white; 
+                        padding: 15px 30px; 
+                        font-size: 24px; 
+                        font-weight: bold; 
+                        border-radius: 50px; 
+                        text-decoration: none; 
+                        display: inline-block; 
+                        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                        transition: all 0.3s ease;
+                    " onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
+                        📞 CALL NOW
+                    </a>
+                </div>
+                """
+                st.markdown(call_html, unsafe_allow_html=True)
                 
                 # Navigation buttons
                 col_nav1, col_nav2 = st.columns(2)
