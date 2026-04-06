@@ -6,7 +6,7 @@ import io
 def extract_leads(df):
     """
     Extract leads with phone and name from DataFrame.
-    Preserves first-seen order, associates name with first phone found in row.
+    Preserves first-seen order, associatees name with first phone found in row.
     """
     phone_pattern = r'\b\d{10}\b'
     leads = []
@@ -109,6 +109,10 @@ def main():
                 st.markdown(f"### **{current_name}**")
                 st.markdown(f"**### {current_num}**")
                 st.caption(f"Position: {st.session_state.current_index + 1} of {total}")
+                
+                # CALL NOW button - mobile dialer
+                if st.button("📞 CALL NOW", type="primary", use_container_width=True, help="Opens phone dialer"):
+                    st.markdown(f"[Click to call {current_num}](tel:{current_num})")
                 
                 # Navigation buttons
                 col_nav1, col_nav2 = st.columns(2)
